@@ -7,6 +7,7 @@
 If you are __upgrading your existing cart__, be sure to read the [upgrade instructions](UPGRADE.md) instead
 
 
+
 ## Linux Install
 
 1. Upload all of the files and folders to your server from the "Upload" folder, place them in your web root. The web root is different on some servers, cPanel it should be ```public_html/``` and on Plesk it should be ```httpdocs/```.
