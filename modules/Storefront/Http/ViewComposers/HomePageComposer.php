@@ -107,7 +107,15 @@ class HomePageComposer
             return collect();
         }
 
-        $topBrandIds = setting('storefront_top_brands', []);
+        $topBrandIds = collect(setting('storefront_top_brands', []))
+            ->filter() // remove null, zero, vazio
+            ->values(); // reorganiza as chaves
+
+        if ($topBrandIds->isEmpty()) {
+            return collect();
+        }
+
+        //$topBrandIds = setting('storefront_top_brands', []);
 
         return Cache::rememberForever(md5('storefront_top_brands:' . serialize($topBrandIds)), function () use ($topBrandIds) {
             return Brand::with('files')
