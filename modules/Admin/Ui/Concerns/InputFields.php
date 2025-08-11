@@ -92,8 +92,11 @@ trait InputFields
             '>';
 
         foreach ($list as $listValue => $listName) {
-            $listValue = e((string) $listValue);
-            $listName = e((string) $listName);
+            //$listValue = e($listValue);
+            //$listName = e($listName);
+
+            $listValue = e(is_array($listValue) ? json_encode($listValue) : $listValue);
+            $listName  = e(is_array($listName)  ? json_encode($listName)  : $listName);
 
             if ($multiple && $value instanceof Collection) {
                 $selected = $value->where('id', $listValue)->isNotEmpty() ? 'selected' : '';
