@@ -95,8 +95,8 @@ trait InputFields
             //$listValue = e($listValue);
             //$listName = e($listName);
 
-            $listValue = e(is_array($listValue) ? $listValue['value'] : $listValue);
-            $listName  = e(is_array($listName)  ? $listName['name']  : $listName);
+            $listValue = e(is_array($listValue) ? (string) $listValue['value'] : $listValue);
+            $listName  = e(is_array($listName)  ? (string) $listName['name']  : $listName);
 
             if ($multiple && $value instanceof Collection) {
                 $selected = $value->where('id', $listValue)->isNotEmpty() ? 'selected' : '';
